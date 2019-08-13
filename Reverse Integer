@@ -2,27 +2,20 @@ class Solution {
     fun reverse(x: Int): Int {
         
         var x2 = x
-        var rst = 0
         var temp = 0
+        var rst = 0
         
         // 123
         while (x2 != 0){
             temp = x2 % 10
             rst = rst * 10 + temp
-            
             x2 = x2 / 10
         }
 
-        println("FYI, MIN_VALUE: " + Int.MIN_VALUE + " ------ MAX_VALUE: " + Int.MAX_VALUE)
-        println("rst: " + rst)    
-        
-        
         if (rst < Int.MIN_VALUE/10 || rst > Int.MAX_VALUE/10){
             return 0
-        }
-            
+        }            
         
         return rst
-        
     }
 }

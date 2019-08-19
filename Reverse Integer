@@ -1,21 +1,21 @@
 class Solution {
     fun reverse(x: Int): Int {
+		
+        // Declare variables for processing
+        var reversed:Long = 0  // This will be used to compare if overflow 
+        var x: Int = x
         
-        var x2 = x
-        var temp = 0
-        var rst = 0
-        
-        // 123
-        while (x2 != 0){
-            temp = x2 % 10
-            rst = rst * 10 + temp
-            x2 = x2 / 10
+        // Processing reading and reversing digits
+        while (x != 0) {
+            val digit = x % 10
+            reversed = reversed * 10 + digit
+            x /= 10
         }
-
-        if (rst < Int.MIN_VALUE/10 || rst > Int.MAX_VALUE/10){
-            return 0
-        }            
         
-        return rst
+        // Check if it's a overflow or not 
+        if(reversed>Int.MAX_VALUE || reversed<Int.MIN_VALUE) reversed = 0
+        
+        return reversed.toInt()
+        
     }
 }

@@ -1,0 +1,31 @@
+class Solution {
+    fun isPalindrome(x: Int): Boolean {
+        /*
+        Options:
+        - If negative, then it's an automatic "false"
+          1. Reverse a number and compare with the original. 
+          2.
+        */
+        
+        var temp: Int = x
+        var int1: Int = 0
+        var rst: Int = 0
+        
+        if (temp < 0)
+            return false        
+        else if (temp == 0)
+            return true
+
+        
+        while(temp != 0){
+            int1 = temp % 10
+            rst = rst * 10 + int1
+            temp = temp / 10
+        }    
+            
+        if (rst == x) 
+            return true 
+        
+        return false
+    }
+}

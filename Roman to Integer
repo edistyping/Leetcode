@@ -1,0 +1,39 @@
+class Solution {
+    fun romanToInt(s: String): Int {
+        val hashMap:HashMap<Char, Int> = HashMap<Char, Int>() //define empty hashmap  
+        hashMap.put('I', 1)
+        hashMap.put('V', 5)
+        hashMap.put('X', 10)
+        hashMap.put('L', 50)
+        hashMap.put('C', 100)
+        hashMap.put('D', 500)
+        hashMap.put('M', 1000)
+
+        var rst: Int = 0
+        var neg: Boolean = false
+        
+        for (i in 0 until s.length) { 
+            var value = 0
+            value = hashMap.get(s[i])!!
+            
+            if(i == s.length - 1)
+                return rst + value
+            
+            if(s[i] == 'I' && (s[i+1] == 'V' || s[i+1] == 'X' )){
+                value *= -1             
+            }
+            if(s[i] == 'X' && (s[i+1] == 'L' || s[i+1] == 'C' )){
+                value *= -1            
+            }
+            if(s[i] == 'C' && (s[i+1] == 'D' || s[i+1] == 'M' )){
+                value *= -1            
+            }            
+        
+            rst += value
+        }       
+
+        println("rst = " + rst)
+        
+        return rst
+    }
+}

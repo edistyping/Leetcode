@@ -1,32 +1,36 @@
 class Solution {
     fun longestCommonPrefix(strs: Array<String>): String {
         
-        var firstStr: String = strs[0]
+        // This will be used as a return variable
         var rst: String = ""
-        
-        val nullableInt: Int? = strs[0].length
-        val smallerSize: Int = nullableInt!! // asserting and smart cast
-        
-        for (i in 1 until strs.size) {
-            
-            var secondStr: String = strs[i]
-            var temp: String = ""
-            
-            for(j in 0 until strs[i].length) { // or use rst.length
-                
-                if (firstStr[i] == secondStr[j]) {
-                    temp += firstStr[i]
-                    rst = temp
-                }
-                else {
-                    break
-                }
-                
+    
+        // If the input is empty, then output nothing.
+        if(!strs.isNullOrEmpty())
+            rst = strs[0]
+        else
+            return rst
+       
+        for (i in 1 until strs.size) { 
+            var s_temp = strs[i]
+            var what: String = ""
+           
+            var shorterLength: Int = s_temp.length
+            if( rst.length <= s_temp.length){
+                shorterLength = rst.length
             }
             
+            for(i in 0 until shorterLength){
+                
+                if(rst[i] == s_temp[i]){
+                    what += rst[i]
+                }
+                else{
+                    break
+                }
+            }
+            rst = what
         }
         
         return rst
-        
     }
 }

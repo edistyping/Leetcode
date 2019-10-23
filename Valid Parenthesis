@@ -1,0 +1,49 @@
+class Solution {
+public:
+
+    char getReverse(char c){
+        char temp;
+        switch (c)
+        {
+            case '(': 
+                temp = ')';
+                break;
+            case '[': 
+                temp = ']';
+                break;
+            case '{':
+                temp = '}';
+                break;      
+            default: 
+                temp = 0;
+        }
+        return temp;
+    }
+    
+    bool isValid(string s) {
+        
+        stack <char> stk;
+        
+        for(int i = 0; i < s.length(); i++){
+                       
+            if (s.size() == 1){
+                return false;
+            }
+            
+            if (s[i] == '(' || s[i] == '{' || s[i] == '['){
+                stk.push(s[i]);
+            }
+            else if ( stk.empty() == false && getReverse(stk.top()) == s[i] ){
+                stk.pop();
+            }
+            else if(stk.empty() || getReverse(stk.top()) != s[i] ){
+                return false;
+            }
+            
+        }       
+        
+        return stk.empty();
+    }
+};
+
+

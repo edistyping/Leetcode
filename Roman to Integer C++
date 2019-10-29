@@ -1,0 +1,55 @@
+class Solution {
+public:
+    
+    void initializeMap(map<char,int> &m){
+        m['I'] = 1;
+        m['V'] = 5;
+        m['X'] = 10;
+        m['L'] = 50;
+        m['C'] = 100;
+        m['D'] = 500;
+        m['M'] = 1000;
+    }
+
+    int romanToInt(string s) {
+        cout << "Input String: " << s << endl;
+
+        map<char, int> m;
+        int sum = 0; 
+        initializeMap(m);    
+
+        // Loop through the string and process it
+        cout << "-----------------------------" << endl;
+        for(int i = 0; i < s.length(); i++){
+            cout << s[i] << endl;
+            char value = s[i];
+            int temp = m[value]; 
+            if( i + 1 == s.length()){
+                
+            }                  
+            else if( value == 'I' && (s[i+1] == 'V' || s[i+1] == 'X') ){
+                temp *= -1;        
+            }
+            else if( value == 'X' && (s[i+1] == 'L' || s[i+1] == 'C') ){
+                temp *= -1;        
+            }
+            else if( value == 'C' && (s[i+1] == 'D' || s[i+1] == 'M') ){
+                temp *= -1;        
+            }
+                        
+            sum += temp;
+        }
+        
+        
+        /*
+        // Just outputting the map
+        cout << "Outputting values of the map" << endl;
+        for(auto it = m.cbegin(); it != m.cend(); ++it){
+            cout << it->first << " " << it->second << endl; 
+        }
+        */
+  
+        
+        return sum;
+    }
+};

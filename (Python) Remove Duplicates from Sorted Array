@@ -1,0 +1,33 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        '''
+        Input: nums = [0,0,1,1,1,2,2,3,3,4]
+        Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+        
+        Two Pointers 
+        
+        traverse each element in array
+            - check if it's an array (or matches the last element in the array)
+                - if yes, move on to next item
+                - if no, add it        
+                
+            can't create a list and append because it requires us to strictly use 'nums' variable
+        '''
+        if len(nums) == 1:
+            print("sus")
+            return 1
+        
+        l = None
+        r = 0
+        
+        while(r < len(nums)):
+            if l is None:
+                l = 0
+            if nums[l] != nums[r]:
+                nums[l + 1] = nums[r]
+                l += 1
+            r += 1
+                    
+        return l + 1
+        
+        
